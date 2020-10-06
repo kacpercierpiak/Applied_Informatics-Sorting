@@ -31,10 +31,10 @@ namespace SortTest.RepositoriesTest
             var numberRange = new NumberRangeModel();
             if (!isEmptyConstructor)
                 numberRange = new NumberRangeModel(minValue, maxValue, step);
-            Assert.Equal(minValue, numberRange.minValue);
-            Assert.Equal(maxValue, numberRange.maxValue);
-            Assert.Equal(step, numberRange.step);       
-            Assert.Equal(expectedQty, numberRange.numberQty);           
+            Assert.Equal(minValue, numberRange.MinValue);
+            Assert.Equal(maxValue, numberRange.MaxValue);
+            Assert.Equal(step, numberRange.Step);       
+            Assert.Equal(expectedQty, numberRange.NumberQty);           
         }
         [Theory]
         [MemberData(nameof(NumberRangeModelContructorData))]
@@ -43,10 +43,10 @@ namespace SortTest.RepositoriesTest
             var numberGenerator = new NumberGeneratorRepository();
             if (!isEmptyConstructor)
                 numberGenerator = new NumberGeneratorRepository(minValue, maxValue, step);
-            Assert.Equal(minValue, numberGenerator.numberRange.minValue);
-            Assert.Equal(maxValue, numberGenerator.numberRange.maxValue);
-            Assert.Equal(step, numberGenerator.numberRange.step);
-            Assert.Equal(expectedQty, numberGenerator.numberRange.numberQty);
+            Assert.Equal(minValue, numberGenerator.NumberRange.MinValue);
+            Assert.Equal(maxValue, numberGenerator.NumberRange.MaxValue);
+            Assert.Equal(step, numberGenerator.NumberRange.Step);
+            Assert.Equal(expectedQty, numberGenerator.NumberRange.NumberQty);
         }
 
         [Theory]

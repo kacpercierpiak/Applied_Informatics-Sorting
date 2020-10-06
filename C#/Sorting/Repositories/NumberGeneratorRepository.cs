@@ -1,28 +1,25 @@
-﻿using Sort.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
+using Sort.Models;
 
 namespace Sort.Repositories
 {
     public class NumberGeneratorRepository
     {
-        public NumberRangeModel numberRange { get; set; }
-        public NumberGeneratorRepository() {
-            numberRange = new NumberRangeModel();
-        }
+        public NumberRangeModel NumberRange { get; set; } = new NumberRangeModel();
+
+        public NumberGeneratorRepository() {}
+
         public NumberGeneratorRepository(short minValue, short maxValue, byte step)
         {
-            numberRange = new NumberRangeModel(minValue, maxValue, step);
+            NumberRange = new NumberRangeModel(minValue, maxValue, step);
         }
         
         private short[] GetNumberArray()
         {                  
-            var result = new short[numberRange.numberQty];          
-            for (ushort i = 0; i < numberRange.numberQty; i++)
+            var result = new short[NumberRange.NumberQty];          
+            for (ushort i = 0; i < NumberRange.NumberQty; i++)
             {                
-                result[i] = (short)(numberRange.minValue + (i * numberRange.step));
+                result[i] = (short)(NumberRange.MinValue + (i * NumberRange.Step));
             }                
             return result;
         }
@@ -32,9 +29,10 @@ namespace Sort.Repositories
             var result = new short[numberQty];
             Random generator = new Random();
             for (int i=0; i < numberQty; i++)
-                result[i] = (short)generator.Next(numberRange.minValue, numberRange.maxValue);
+                result[i] = (short)generator.Next(NumberRange.MinValue, NumberRange.MaxValue);
             return result;
         }
+
         private short[] GenerateNumberWithoutDuplicates(ushort numberQty)
         {
             var result = new short[numberQty];
@@ -44,7 +42,7 @@ namespace Sort.Repositories
             {
                 var position = generator.Next(tempNumbersArray.Length-(1+i));
                 result[i] = tempNumbersArray[position];
-                tempNumbersArray[position] = tempNumbersArray[tempNumbersArray.Length - (1 + i)];                       
+                tempNumbersArray[position] = tempNumbersArray[^(1 + i)];                       
             }
 
             return result;
@@ -55,7 +53,7 @@ namespace Sort.Repositories
             if (withDuplicates)
                 return GenerateNumberWithDuplicates(numberQty);
             else
-                if(numberQty <= numberRange.numberQty)
+                if(numberQty <= NumberRange.NumberQty)
                     return GenerateNumberWithoutDuplicates(numberQty);
                 else
                     throw new System.ArgumentException("Parameter cannot be less then range number qty", "numberQty");

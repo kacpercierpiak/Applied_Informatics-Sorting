@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Sort.Models
+﻿namespace Sort.Models
 {
     public class NumberRangeModel
     {
-        public short maxValue { get; private set; } = 10;
-        public short minValue { get; private set; } = 0;
-        public byte step { get; private set; } = 1;
-        public ushort numberQty 
+        public short MaxValue { get; private set; } = 10;
+        public short MinValue { get; private set; } = 0;
+        public byte Step { get; private set; } = 1;
+        public ushort NumberQty 
         { 
             get
             {        
-                return (ushort)(maxValue == minValue ? 1 : (ushort)(maxValue - minValue));
+                return (ushort)(MaxValue == MinValue ? 1 : (ushort)(MaxValue - MinValue));
             } 
         }
         public NumberRangeModel() { }
@@ -28,9 +24,9 @@ namespace Sort.Models
             if((maxValue - minValue) % step != 0)
                 throw new System.ArgumentException("Range is undivided by step ", "step");
 
-            this.minValue = minValue;
-            this.maxValue = maxValue;            
-            this.step = step;
+            this.MinValue = minValue;
+            this.MaxValue = maxValue;            
+            this.Step = step;
         }
     }
 }

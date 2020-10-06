@@ -6,9 +6,4 @@
     <RootNamespace>Sort</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
